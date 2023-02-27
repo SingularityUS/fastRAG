@@ -20,8 +20,8 @@ from pathlib import Path
 
 import streamlit as st
 import streamlit.components.v1 as components
-#from annotated_text import annotation
-#from markdown import markdown
+from annotated_text import annotation
+from markdown import markdown
 
 from fastrag.ui.kg import get_kg_html
 from fastrag.ui.utils import (
@@ -253,10 +253,10 @@ This is a demo of a generative Q&A pipeline, using the fastRAG package.
             if result["answer"]:
                 answer = result["answer"]
                 # Hack due to this bug: https://github.com/streamlit/streamlit/issues/3190
-                #st.write(
-                    #markdown(str(annotation(answer, "ANSWER", "#8ef"))),
-                    #unsafe_allow_html=True,
-                #)
+                st.write(
+                    markdown(str(annotation(answer, "ANSWER", "#8ef"))),
+                    unsafe_allow_html=True,
+                )
                 st.write("#### The relevant documents are:")
                 for doc_i, doc in enumerate(result["document"]):
                     st.markdown(f"**Document {doc_i + 1}:** {doc}")
